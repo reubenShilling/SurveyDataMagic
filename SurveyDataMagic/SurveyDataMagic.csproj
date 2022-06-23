@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net6.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <LangVersion>10</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CsvHelper" Version="27.2.1" />
+      <PackageReference Include="FolderBrowserEx" Version="1.0.1" />
+      <PackageReference Include="FontAwesome5" Version="2.1.11" />
+      <PackageReference Include="ICSharpCode.WpfDesigner" Version="8.1.27" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\SurveyDataMagic.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Resources\SurveyDataMagic.png" />
+      <Resource Include="Resources\SurveyDataMagic.png" />
+      <None Remove="Resources\FontAwesome\otfs\Font_Awesome_6_Brands-Regular-400.otf" />
+      <None Remove="Resources\FontAwesome\otfs\Font_Awesome_6_Free-Regular-400.otf" />
+      <None Remove="Resources\FontAwesome\otfs\Font_Awesome_6_Free-Solid-900.otf" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Core\CSV" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="FxlHelper">
+        <HintPath>..\..\FxlHelper\FxlHelper\bin\Release\net6.0\FxlHelper.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,114 @@
+﻿<Window x:Class="SurveyDataMagic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa5="http://schemas.fontawesome.com/icons/"
+        xmlns:local="clr-namespace:SurveyDataMagic"
+        mc:Ignorable="d"
+        Title="Survey Data Magic" Height="485" Width="800" FontSize="18" ResizeMode="NoResize"
+        Icon="pack://application:,,,/Resources/SurveyDataMagic.png">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+        <Separator Grid.ColumnSpan="6" VerticalAlignment="Top" />
+
+        <TextBlock Grid.Column="1" Grid.Row="1" FontFamily="Arial" Margin="5,10"
+                   Text="Trimble FXL file:"
+                   ToolTip="Full file path for the Trimble .fxl file to check the survey data against" />
+        <TextBox Grid.Column="2" Grid.Row="1" x:Name="FxlFilePath" Margin="5,10" Width="540"
+                 TextChanged="FxlFilePath_OnTextChanged" />
+        <Button Grid.Column="3" Grid.Row="1" x:Name="BtnPickFxl" Width="30" Margin="5,10" Padding="5"
+                ToolTip="Select Trimble FXL file to validate survey CSV files against."
+                Click="BtnPickFxl_OnClick">
+            <fa5:FontAwesome Icon="Solid_EllipsisH" />
+        </Button>
+
+        <TextBlock Grid.Column="1" Grid.Row="2" FontFamily="Arial" Margin="5,10"
+                   Text="Survey CSV files:"
+                   ToolTip="Full file paths for the survey .csv files to check" />
+        <ListView Grid.Column="2" Grid.Row="2" x:Name="SurveyCsvList" Width="540" Height="100" Margin="5,10">
+        </ListView>
+        <Button Grid.Column="3" Grid.Row="2" x:Name="BtnAddSurveyCsv"
+                Width="30" Margin="5,10" Padding="5" Height="40" VerticalAlignment="Top"
+                ToolTip="Select survey CSV files to add to list."
+                Click="BtnAddSurveyCsv_OnClick">
+            <fa5:FontAwesome Icon="Solid_EllipsisH" />
+        </Button>
+        <Button Grid.Column="3" Grid.Row="2" x:Name="BtnClearSurveyCsv"
+                Width="30" Margin="5,10" Padding="5" Height="40" VerticalAlignment="Bottom"
+                ToolTip="Clear survey CSV files list."
+                Click="BtnClearSurveyCsv_OnClick">
+            <fa5:FontAwesome Icon="Solid_Trash" />
+        </Button>
+
+        <TextBlock Grid.Column="1" Grid.Row="3" FontFamily="Arial" Margin="5,10"
+                   Text="Output folder:"
+                   ToolTip="Folder to write parsed survey CSV files to" />
+        <TextBox Grid.Column="2" Grid.Row="3" x:Name="OutFolder" Margin="5,10" Width="540"
+                 TextChanged="OutFolder_OnTextChanged_OnTextChanged" />
+        <Button Grid.Column="3" Grid.Row="3" x:Name="BtnPickOutFolder" Width="30" Margin="5,10" Padding="5"
+                ToolTip="Select folder output location for parsed survey CSV data."
+                Click="BtnPickOutFolder_OnClick">
+            <fa5:FontAwesome Icon="Solid_EllipsisH" />
+        </Button>
+
+        <GroupBox Grid.Column="1" Grid.Row="4" x:Name="GrpBxOptions" Grid.ColumnSpan="3" Margin="5,10"
+                  Header="Parsing Options">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <CheckBox Grid.Column="1" Grid.Row="1" x:Name="CkBxRemoveControlCodes"
+                          Margin="5,10" VerticalContentAlignment="Center" HorizontalAlignment="Center"
+                          ToolTip="Removes all control codes from parsed survey CSV output files.
+                          Including any numeric suffixes used to differentiate between features."
+                          Content="Remove control codes">
+                </CheckBox>
+                <CheckBox Grid.Column="2" Grid.Row="1" x:Name="CkBxGroupOutFilesBySurveyCode"
+                          Margin="5,10" VerticalContentAlignment="Center" HorizontalAlignment="Center"
+                          ToolTip="Group parsed survey CSV files by code instead of retaining the original filename."
+                          Content="Group output files by survey code">
+                </CheckBox>
+            </Grid>
+        </GroupBox>
+
+        <Button Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2" x:Name="BtnParseSurveyFiles" Margin="5,10"
+                Padding="10,5" HorizontalAlignment="Right" Click="BtnParseSurveyFiles_OnClick">
+            <StackPanel Orientation="Horizontal">
+                <fa5:FontAwesome Icon="Solid_Play" Height="20" Margin="0,3,10,0"></fa5:FontAwesome>
+                <TextBlock Text="Process Files" />
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>
